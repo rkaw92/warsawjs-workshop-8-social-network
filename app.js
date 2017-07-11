@@ -7,13 +7,14 @@ const modules = [
   require('./app/Modules/publisher'),
   require('./app/Modules/subscriber'),
   require('./app/Modules/repository'),
-  require('./app/Modules/services')
+  require('./app/Modules/services'),
+  require('./app/Modules/webAPI'),
+  require('./app/Modules/eventLog')
 ];
 
 const CompositionManager = require('app-compositor').CompositionManager;
 const app = new CompositionManager();
-app.runModules(modules).then(async function({ services }) {
-  const currentUser = { ID: '745a6334-e876-5813-ade2-352170f6b1df', displayName: 'Admin' };
-  const service = services.createServiceGetter({});
-  console.log(await service('registerUser')({ userID: '1c984841-a6b5-530c-a89e-c9895309c3e5', displayName: 'Rob', email: 'rob@bob.com', password: '12345' }, { currentUser }));
+app.runModules(modules).then(function({ streamer }) {
+  // Start propagating Domain Events to subscribers:
+  streamer.start();
 }).done();
