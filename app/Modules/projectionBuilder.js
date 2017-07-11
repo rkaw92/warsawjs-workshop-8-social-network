@@ -15,6 +15,9 @@ const eventHandlers = {
         posts: []
       })
     ]);
+  },
+  'User.MessagePosted': function(db, event, commit) {
+    return db.ref(`/profiles/${commit.sequenceID}/messages/${event.eventPayload.message.ID}`).update(event.eventPayload.message);
   }
 };
 

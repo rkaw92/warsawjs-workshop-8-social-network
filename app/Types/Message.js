@@ -3,7 +3,7 @@
 /**
  * A Message is a ValueObject representing a single piece of information
  *  communicated by somebody.
- * @property {string} ID - The unique ID of this message.
+ * @property {string} ID - The unique ID of this message. Must be 36 characters long (UUID).
  * @property {string} body - The text content of the communication.
  * @property {Object} from - An identification of the user who posted the message.
  * @property {string} from.ID - ID of the message's sender.

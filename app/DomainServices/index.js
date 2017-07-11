@@ -1,5 +1,6 @@
 'use strict';
 
 module.exports = {
-  registerUser: require('./registerUser')
+  registerUser: require('./registerUser'),
+  postMessage: require('./postMessage')
 };
