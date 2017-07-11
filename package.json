@@ -11,7 +11,7 @@
   "dependencies": {
     "app-compositor": "^0.4.0",
     "bcrypt": "^1.0.2",
-    "esdf": "^0.1.6"
+    "esdf": "^0.2.0"
   },
   "devDependencies": {
     "documentation": "^4.0.0-rc.1",
