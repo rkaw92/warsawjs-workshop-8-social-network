@@ -13,6 +13,6 @@ const User = require('../Entities/User');
  */
 module.exports = async function registerUser({ repository, config }, params) {
   return await repository.invoke(User, params.userID, async function(userInstance) {
-    return await userInstance.register(params, { config, currentUser });
+    return await userInstance.register(params, { config });
   });
 };
