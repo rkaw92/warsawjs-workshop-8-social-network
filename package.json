@@ -12,6 +12,7 @@
     "app-compositor": "^0.4.0",
     "bcrypt": "^1.0.2",
     "esdf": "^0.2.1",
+    "firebase": "^4.1.3",
     "restify": "^5.0.0"
   },
   "devDependencies": {

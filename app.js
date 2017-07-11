@@ -9,7 +9,9 @@ const modules = [
   require('./app/Modules/repository'),
   require('./app/Modules/services'),
   require('./app/Modules/webAPI'),
-  require('./app/Modules/eventLog')
+  require('./app/Modules/eventLog'),
+  require('./app/Modules/projectionDB'),
+  require('./app/Modules/projectionBuilder')
 ];
 
 const CompositionManager = require('app-compositor').CompositionManager;

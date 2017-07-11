@@ -12,7 +12,7 @@ const User = require('../Entities/User');
  * @param {string} params.password - The plain-text form of the password to give to the user.
  */
 module.exports = async function registerUser({ repository, config }, params) {
-  return await repository.invoke(User, params.userID, async function(userInstance) {
-    return await userInstance.register(params, { config });
+  return await repository.invoke(User, params.userID, function(userInstance) {
+    return userInstance.register(params, { config });
   });
 };
