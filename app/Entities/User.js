@@ -54,6 +54,10 @@ class User extends EventSourcedAggregate {
     if (!message || typeof message !== 'object') {
       throw new Error('A message needs to be provided for posting');
     }
+    // Guard clause: require a (logged in) user to call this.
+    if (!currentUser) {
+      throw new Error('Only logged in users may post messages');
+    }
     // Construct an actual message object out of the provided "prototype" and
     //  context information about the caller. This way, we do not have to rely
     //  on the caller identifying themselves truthfully.

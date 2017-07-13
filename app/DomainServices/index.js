@@ -2,5 +2,6 @@
 
 module.exports = {
   registerUser: require('./registerUser'),
-  postMessage: require('./postMessage')
+  postMessage: require('./postMessage'),
+  login: require('./login')
 };

@@ -1,12 +1,19 @@
 'use strict';
 
 const restify = require('restify');
+const cookies = require('restify-cookies');
+const jwt = require('jsonwebtoken');
 
-function serviceMiddleware(serviceContainer) {
+function serviceMiddleware(serviceContainer, config) {
   return function _createServiceGetterForRequest(req, res, next) {
-    //TODO: Actually load user credentials from a JSON Web Token.
-    const currentUser = { ID: '00c12c1d-28ea-5980-9d94-fecb15a92a91', displayName: 'Fake User' };
-    req.getService = serviceContainer.createServiceGetter({ currentUser });
+    const tokenCookie = (req.cookies || {}).token;
+    let currentUser;
+    if (tokenCookie) {
+      const user = jwt.verify(tokenCookie, config.tokenSecret, { algorithms: [ 'HS256' ] });
+      currentUser = { ID: user.ID, displayName: user.displayName };
+    }
+
+    req.getService = serviceContainer.createServiceGetter({ currentUser, req, res });
     return next();
   };
 }
@@ -23,7 +30,8 @@ module.exports = function() {
     server.use(restify.plugins.acceptParser(server.acceptable));
     server.use(restify.plugins.queryParser());
     server.use(restify.plugins.bodyParser());
-    server.use(serviceMiddleware(services));
+    server.use(cookies.parse);
+    server.use(serviceMiddleware(services, config));
 
     // Export Domain Services over HTTP:
     server.post('/services/:serviceName', async function(req, res, next) {

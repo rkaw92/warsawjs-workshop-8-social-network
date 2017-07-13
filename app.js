@@ -11,7 +11,9 @@ const modules = [
   require('./app/Modules/webAPI'),
   require('./app/Modules/eventLog'),
   require('./app/Modules/projectionDB'),
-  require('./app/Modules/projectionBuilder')
+  require('./app/Modules/projectionBuilder'),
+  require('./app/Modules/authDB'),
+  require('./app/Modules/authBuilder')
 ];
 
 const CompositionManager = require('app-compositor').CompositionManager;
