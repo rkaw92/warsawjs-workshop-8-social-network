@@ -3,12 +3,6 @@
 const eventHandlers = {
   'User.Registered': function(db, event, commit) {
     return Promise.all([
-      db.ref(`/accounts/${commit.sequenceID}`).update({
-        ID: commit.sequenceID,
-        displayName: event.eventPayload.displayName,
-        email: event.eventPayload.email,
-        passwordHash: event.eventPayload.passwordHash
-      }),
       db.ref(`/profiles/${commit.sequenceID}`).update({
         ID: commit.sequenceID,
         displayName: event.eventPayload.displayName,
