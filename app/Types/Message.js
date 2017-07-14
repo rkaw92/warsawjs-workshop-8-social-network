@@ -43,7 +43,7 @@ class Message {
       otherMessage.body === this.body &&
       otherMessage.from &&
       otherMessage.from.ID === this.from.ID &&
-      otherMessge.from.displayName === this.from.displayName
+      otherMessage.from.displayName === this.from.displayName
     );
   }
 }

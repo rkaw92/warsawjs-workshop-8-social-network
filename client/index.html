@@ -1,6 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/base-min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+    <style type="text/css">
+      body {
+        background-color: #341354;
+      }
+      h1, h2 {
+        font-family: "Montserrat", sans;
+      }
+      .profile {
+        background-color: #502C73;
+        display: block;
+        border: 1px solid #DDD;
+        width: 95%;
+        padding: 1.0em;
+        margin: 0.5em auto 0.5em auto;
+        position: relative;
+      }
+      .user-info {
+        color: #8F74AA;
+        border-bottom: 1px solid #DDD;
+        display: inline-block;
+        width: 100%;
+      }
+      .user-info h1, .user-info .user-id {
+        float: left;
+        font-size: 1.5em;
+        margin: 0 0.25em 0 0;
+      }
+      .user-info .user-id {
+        color: #6F4D8F;
+      }
+      .user-info .user-id::before {
+        content: '[';
+      }
+      .user-info .user-id::after {
+        content: ']';
+      }
+      .profile h2 {
+        font-size: 1.25em;
+        color: #8F74AA;
+      }
+      .post {
+        display: block;
+        width: 100%;
+        margin: 0.25em 0.1em 0.25em 0.1em;
+      }
+      .post:nth-child(even) {
+        background-color: #BBA7CD;
+      }
+      .post:nth-child(odd) {
+        background-color: #8F74AA;
+      }
+      .post .post-metadata {
+        color: #341354;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 0.1em;
+      }
+      .post .post-metadata span {
+        float: left;
+        margin: 0 0.25em 0 0;
+      }
+      .post .post-author {
+        font-weight: bold;
+      }
+      .post .post-body {
+        padding-left: 1em;
+      }
+    </style>
+  </head>
   <body>
     <main id="app"></main>
     <script src="bundle.js"></script>

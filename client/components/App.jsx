@@ -1,6 +1,7 @@
 'use strict';
 
 const React = require('react');
+const Profile = require('./Profile.jsx');
 
 class App extends React.Component {
   constructor(props) {
@@ -24,11 +25,10 @@ class App extends React.Component {
         // Copy all keys from db:
         db: Object.assign({}, self.state.db, {
           // Just replace "profiles":
-          profiles: profiles
+          profiles: profiles.val()
         })
       }));
     }
-    this._profileUpdater = updateProfiles;
     const profilesRef = this._db.database().ref('/profiles');
     profilesRef.on('value', updateProfiles);
     this._cleanupTasks.push(function removeListener() {
@@ -37,7 +37,10 @@ class App extends React.Component {
   }
 
   render() {
-    return <pre>{JSON.stringify(this.state.db.profiles)}</pre>;
+    const userProfiles = Object.keys(this.state.db.profiles).map((profileID) => this.state.db.profiles[profileID]);
+    return <div>
+      { userProfiles.map((profile) => <Profile key={profile.ID} ID={profile.ID} displayName={profile.displayName} messages={profile.messages} />) }
+    </div>;
   }
 
   componentWillUnmount() {
