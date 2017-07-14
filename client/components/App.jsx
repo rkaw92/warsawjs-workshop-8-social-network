@@ -25,7 +25,7 @@ class App extends React.Component {
         // Copy all keys from db:
         db: Object.assign({}, self.state.db, {
           // Just replace "profiles":
-          profiles: profiles.val()
+          profiles: profiles.val() || {}
         })
       }));
     }
